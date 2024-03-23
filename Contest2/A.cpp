@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int n;
+int n, m, k;
 vector<vector<pair<int, int>>> adj;
 vector<int> Pair_U, Pair_V, Dist;
 const int NIL = 0, INF = INT_MAX;
@@ -73,7 +73,7 @@ bool dfs(int u, int k)
 
 //Is Correct
 //Modified Hopcroft - Karp (See Ed Discussion for more info)
-bool HK(int k)
+int HK(int k)
 {
     int cnt = 0;
 
@@ -89,7 +89,15 @@ bool HK(int k)
         }
     }
 
-    return cnt == n;
+        
+    printf("%d\n", cnt);
+    for(int i=1; i<=n; i++)
+    {
+        if(Pair_U[i] != NIL){
+            printf("%d %d\n", i, Pair_U[i]);
+        }
+    }
+    return n;
 }
 
 int main()
@@ -99,7 +107,6 @@ int main()
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 
-    int n, m, k;
     scanf("%d %d %d\n", &n, &m, &k);
     
     adj = vector<vector<pair<int, int>>>(n+1);
@@ -118,28 +125,6 @@ int main()
         adj[u].pb({v, i});
     }
 
-    int j;
-    
-    int l = n-1; 
-    int r = m;
-    
-    while (l <= r) {
-        j = (l+r)/2; 
-        
-        if (j==l) break; 
-        
-        if (HK(j)){ 
-            r = j; 
-        } else {
-            l = j; 
-        }
-        
-    }
-    
-    k++; 
-   // for(k=first_k; k<m; k++) if(HK(k)) break;
-
-    if(k < m) cout << edge[k][0];
-    else cout << -1;
+    HK(k);
 }
 
