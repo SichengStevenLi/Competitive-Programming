@@ -107,7 +107,7 @@ int main()
 	cin.tie(nullptr);
 	cout.tie(nullptr);
 
-    scanf("%d %d %d\n", &n, &m, &k);
+    cin >> n >> m >> k;
     
     adj = vector<vector<pair<int, int>>>(n+1);
     vector<vector<int>> edge(m);
@@ -127,4 +127,3 @@ int main()
 
     HK(k);
 }
-
